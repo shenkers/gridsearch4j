@@ -29,7 +29,7 @@ public class GridSearch {
     List<List<Object>> values;
     List<Integer> sizes;
     List<Integer> indexes;
-    
+
     long searchIndex;
     long gridSize = 1;
 
@@ -48,7 +48,9 @@ public class GridSearch {
 
         for (int i = 0; i < fieldNames.size(); i++) {
             String fieldName = fieldNames.get(i);
-            fields.add(clazz.getDeclaredField(fieldName));
+            Field field = clazz.getDeclaredField(fieldName);
+            field.setAccessible(true);
+            fields.add(field);
             List<Object> fieldValues = fieldGrid.get(fieldName);
             values.add(fieldValues);
             sizes.add(fieldValues.size());
@@ -87,12 +89,12 @@ public class GridSearch {
         } while (carry_over && i < indexes.size());
         return false;
     }
-    
-    public long getSearchIndex(){
+
+    public long getSearchIndex() {
         return searchIndex;
     }
-    
-    public long getGridSize(){
+
+    public long getGridSize() {
         return gridSize;
     }
 
