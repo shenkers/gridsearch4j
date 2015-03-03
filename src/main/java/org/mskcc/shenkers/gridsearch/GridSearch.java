@@ -14,7 +14,7 @@ import java.util.Map;
  *
  * @author sol
  */
-class GridSearch {
+public class GridSearch {
 
     Map<String, List> fieldGrid;
     int nFields;
